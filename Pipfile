@@ -12,6 +12,7 @@ pytest-django = "*"
 pytest-cov = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+factory-boy = "*"
 
 [packages]
 django = "*"

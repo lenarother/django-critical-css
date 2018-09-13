@@ -1,7 +1,8 @@
 import logging
 
-from barbeque.staticfiles.css import transform_css_urls
 from django.utils.safestring import mark_safe
+
+from barbeque.staticfiles.css import transform_css_urls
 from django_rq import job
 
 

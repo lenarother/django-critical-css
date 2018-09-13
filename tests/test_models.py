@@ -1,6 +1,6 @@
 import pytest
 
-from testing.factories.critical import CriticalFactory
+from .factories import CriticalFactory
 
 
 @pytest.mark.django_db

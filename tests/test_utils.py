@@ -6,7 +6,7 @@ from django.conf import settings
 from critical.utils import complete_url
 
 
-@mock.patch('moccusite.critical.utils.Site.objects.get_current')
+@mock.patch('critical.utils.Site.objects.get_current')
 @pytest.mark.django_db
 def test_complete_url_secure(site_mock, admin_user):
     class SiteMock:
@@ -17,7 +17,7 @@ def test_complete_url_secure(site_mock, admin_user):
     assert complete_url('/foo/bar/1/') == 'https://test.com/foo/bar/1/'
 
 
-@mock.patch('moccusite.critical.utils.Site.objects.get_current')
+@mock.patch('critical.utils.Site.objects.get_current')
 @pytest.mark.django_db
 def test_complete_url_unsecure(site_mock, admin_user):
     class SiteMock:
