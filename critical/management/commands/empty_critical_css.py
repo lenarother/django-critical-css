@@ -13,11 +13,6 @@ class Command(BaseCommand):
         qs = self.get_qs()
         qs_count = qs.count()
         qs.objects.all().delete()
-        qs_count_new = self.get_qs().count()
-        if qs_count_new != 0:
-            self.stdout.write(
-                'After deleting critical css, {0} objects '
-                'reminded'.formar(qs_count_new))
         self.stdout.write(
             self.style.SUCCESS(
                 'Successfully deleted {0} critical objects'.format(qs_count)))
