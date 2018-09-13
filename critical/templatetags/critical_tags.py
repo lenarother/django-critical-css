@@ -6,32 +6,27 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 
 from ..models import Critical
 from ..tasks import calculate_critical_css
+from ..utils import django_cms_is_present, get_url_from_request
 
 
 register = template.Library()
 logger = logging.getLogger(__name__)
 
-# TODO: change request.current_page.get_absolute_url()
-# as it will work only for cms pages
-
 
 def critical_css_is_active(request):
-    """
-    Check if page is published as only published pages
-    shuld be displayed with critical css. For non-cms pages returns True.
+    """Check whether to use critical-css for requested page.
+
+    Check whether critical-css is active (configured in settings) and whether
+    page is published. Page drafts are always loaded without critical css.
+
     """
     if not settings.CRITICAL_CSS_ACTIVE:
         return False
-    try:
-        import cms  # noqa
-        # For django-cms pages only published pages have critical css
-        # as editors need to see changes made to the page.
-        if (request.current_page.is_published(settings.LANGUAGE_CODE) and
-                not request.current_page.publisher_is_draft):
-            return True
-    except ImportError:
-        return True
-    return False
+    if django_cms_is_present():
+        if not (request.current_page.is_published(settings.LANGUAGE_CODE) or
+                request.current_page.publisher_is_draft):
+            return False
+    return True
 
 
 @register.inclusion_tag('critical/critical.html', takes_context=True)
@@ -42,7 +37,7 @@ def critical_css(context, path):
     path = staticfiles_storage.url(path)
 
     if critical_css_is_active(request):
-        url = request.current_page.get_absolute_url()
+        url = get_url_from_request(request)
         critical, created = Critical.objects.get_or_create(url=url)
         if created:
             logger.info(
