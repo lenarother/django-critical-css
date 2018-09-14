@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         qs = self.get_qs()
         qs_count = qs.count()
-        qs.objects.all().delete()
+        qs.delete()
         self.stdout.write(
             self.style.SUCCESS(
                 'Successfully deleted {0} critical objects'.format(qs_count)))
