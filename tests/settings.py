@@ -17,6 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sites',
 
+    'django_rq',
+
     'critical',
 ]
 
@@ -26,6 +28,16 @@ TEMPLATES = [{
 }]
 
 SITE_ID = 1
+
+RQ_SHOW_ADMIN_LINK = True
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'ASYNC': False,
+    },
+}
 
 CRITICAL_CSS_ACTIVE = False
 PENTHOUSE_HOST = 'localhost'

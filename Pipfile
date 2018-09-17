@@ -17,6 +17,7 @@ factory-boy = "*"
 [packages]
 django = "*"
 requests = "*"
+django-rq = "*"
 
 [requires]
 python_version = "3.6"
