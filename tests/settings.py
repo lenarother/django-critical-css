@@ -28,6 +28,7 @@ TEMPLATES = [{
 }]
 
 SITE_ID = 1
+STATIC_URL = '/static/'
 
 RQ_SHOW_ADMIN_LINK = True
 RQ_QUEUES = {
@@ -39,7 +40,7 @@ RQ_QUEUES = {
     },
 }
 
-CRITICAL_CSS_ACTIVE = False
+CRITICAL_CSS_ACTIVE = True
 PENTHOUSE_HOST = 'localhost'
 PENTHOUSE_CONFIG = {
     'width': '720',
