@@ -18,6 +18,7 @@ factory-boy = "*"
 django = "*"
 requests = "*"
 django-rq = "*"
+django-inline-static = "*"
 
 [requires]
 python_version = "3.6"

@@ -2,8 +2,7 @@ import logging
 
 from django.utils.safestring import mark_safe
 from django_rq import job
-
-from .services import transform_css_urls
+from inline_static.css import transform_css_urls
 
 
 logger = logging.getLogger(__name__)
