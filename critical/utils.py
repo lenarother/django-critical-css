@@ -3,7 +3,7 @@ from django.contrib.sites.models import Site
 
 
 def django_cms_is_present():
-    """Helper for checking wheather django-cms library is present.
+    """Helper for checking wheather django-cms library is installed.
 
     (https://github.com/divio/django-cms)
 
