@@ -1,32 +1,15 @@
 import logging
 
 from django import template
-from django.conf import settings
 from django.contrib.staticfiles.storage import staticfiles_storage
 
 from ..models import Critical
 from ..tasks import calculate_critical_css
-from ..utils import django_cms_is_present, get_url_from_request
+from ..utils import get_url_from_request, use_critical_css_for_request
 
 
 register = template.Library()
 logger = logging.getLogger(__name__)
-
-
-def critical_css_is_active(request):
-    """Check whether to use critical-css for requested page.
-
-    Check whether critical-css is active (configured in settings) and whether
-    page is published. Page drafts are always loaded without critical css.
-
-    """
-    if not settings.CRITICAL_CSS_ACTIVE:
-        return False
-    if django_cms_is_present():
-        if not (request.current_page.is_published(settings.LANGUAGE_CODE) or
-                request.current_page.publisher_is_draft):
-            return False
-    return True
 
 
 @register.inclusion_tag('critical/critical.html', takes_context=True)
@@ -36,7 +19,7 @@ def critical_css(context, path):
     original_path = path
     path = staticfiles_storage.url(path)
 
-    if critical_css_is_active(request):
+    if use_critical_css_for_request(request):
         url = get_url_from_request(request)
         critical, created = Critical.objects.get_or_create(url=url)
         if created:
@@ -50,8 +33,7 @@ def critical_css(context, path):
             calculate_critical_css.delay(
                 critical_id=critical.id, original_path=original_path)
             logger.info(
-                'Templatetag: triggered css calculation ({0}, {1})'.format(
-                    request.current_page.pk, url))
+                'Templatetag: triggered css calculation for {0}'.format(url))
         else:
             result_css = critical.css
 

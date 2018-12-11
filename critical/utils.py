@@ -41,3 +41,19 @@ def complete_url(url):
         domain=Site.objects.get_current().domain.rstrip('/'),
         url=url.lstrip('/')
     )
+
+
+def use_critical_css_for_request(request):
+    """Check whether to use critical-css for requested page.
+
+    Check whether critical-css is active (configured in settings) and whether
+    page is published. Page drafts are always loaded without critical css.
+
+    """
+    if not settings.CRITICAL_CSS_ACTIVE:
+        return False
+    if django_cms_is_present():
+        if not (request.current_page.is_published(settings.LANGUAGE_CODE) or
+                request.current_page.publisher_is_draft):
+            return False
+    return True
