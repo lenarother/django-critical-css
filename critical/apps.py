@@ -10,5 +10,6 @@ class CriticalConfig(AppConfig):
 
     def ready(self):
         if django_cms_is_present():
-            # Include signals for refreshing critical css on page publish
+            # If django-cms is installed include signals
+            # for refreshing critical css on page publish
             import critical.signals.handlers  # noqa
