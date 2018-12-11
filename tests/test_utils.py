@@ -3,11 +3,36 @@ from unittest import mock
 import pytest
 from django.conf import settings
 
-from critical.utils import complete_url
+from critical.utils import (
+    complete_url, django_cms_is_present, get_url_from_request, use_critical_css_for_request)
+
+
+try:
+    from cms.api import create_page, publish_page
+except ImportError:
+    pass
+
+
+def test_django_cms_is_present():
+    try:
+        import cms  # noqa
+        assert django_cms_is_present() is True
+    except ImportError:
+        assert django_cms_is_present() is False
+
+
+def test_get_url_from_request(rf):
+    request = rf.get('/')
+    assert get_url_from_request(request) == '/'
+
+    request = rf.get('/foo/?bar=bazz')
+    assert get_url_from_request(request) == '/foo/?bar=bazz'
+
+    request = rf.get('/#anchor')
+    assert get_url_from_request(request) == '/'
 
 
 @mock.patch('critical.utils.Site.objects.get_current')
-@pytest.mark.django_db
 def test_complete_url_secure(site_mock, admin_user):
     class SiteMock:
         domain = 'test.com'
@@ -18,7 +43,6 @@ def test_complete_url_secure(site_mock, admin_user):
 
 
 @mock.patch('critical.utils.Site.objects.get_current')
-@pytest.mark.django_db
 def test_complete_url_unsecure(site_mock, admin_user):
     class SiteMock:
         domain = 'test.com'

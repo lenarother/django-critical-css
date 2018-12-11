@@ -27,8 +27,6 @@ def get_url_from_request(request):
         Page ansolute url.
 
     """
-    if django_cms_is_present:
-        return request.current_page.get_absolute_url()
     return request.get_full_path()
 
 
