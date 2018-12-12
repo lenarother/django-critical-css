@@ -4,7 +4,7 @@ from critical.models import Critical
 
 
 try:
-    from cms.api import create_page, get_page_draft, publish_page
+    from cms.api import create_page, publish_page
 except ImportError:
     pass
 
@@ -31,8 +31,7 @@ class TestSignals:
         critical.css = 'test-critical-css'
         critical.save()
 
-        draft = get_page_draft(page)
-        draft.publish('de')
+        publish_page(page, admin_user, 'de')
         critical.refresh_from_db()
 
         assert Critical.objects.count() == 1

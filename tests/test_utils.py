@@ -9,6 +9,7 @@ from critical.utils import (
 
 try:
     from cms.api import create_page, publish_page
+    from cms.models import Page
 except ImportError:
     pass
 
@@ -68,7 +69,7 @@ def test_use_critical_css_for_request_with_cms(settings, rf, admin_user):
     assert use_critical_css_for_request(request) is False
 
     publish_page(page, admin_user, 'de')
-    page.refresh_from_db()
+    page = Page.objects.get(publisher_is_draft=False)
     request = rf.get('/page')
     request.current_page = page
     assert use_critical_css_for_request(request) is True
