@@ -51,7 +51,8 @@ def use_critical_css_for_request(request):
     if not settings.CRITICAL_CSS_ACTIVE:
         return False
     if django_cms_is_present():
-        if not (request.current_page.is_published(settings.LANGUAGE_CODE) or
+        if (
+                not request.current_page.is_published(settings.LANGUAGE_CODE) or
                 request.current_page.publisher_is_draft):
             return False
     return True
