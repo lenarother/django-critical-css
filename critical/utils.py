@@ -48,7 +48,7 @@ def use_critical_css_for_request(request):
     page is published. Page drafts are always loaded without critical css.
 
     """
-    if not settings.CRITICAL_CSS_ACTIVE:
+    if not getattr(settings, 'CRITICAL_CSS_ACTIVE', True):
         return False
     if django_cms_is_present():
         if (
