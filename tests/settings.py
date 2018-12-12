@@ -57,3 +57,11 @@ PENTHOUSE_CONFIG = {
         'will-change',
     ]
 }
+
+try:
+    import cms  # noqa
+    GLOBAL_INSTALLED_APPS = INSTALLED_APPS
+    from .cms_settings import *  # noqa
+    INSTALLED_APPS = GLOBAL_INSTALLED_APPS + INSTALLED_APPS
+except ImportError:
+    pass
