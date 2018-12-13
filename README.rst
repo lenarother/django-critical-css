@@ -32,8 +32,11 @@ Features
 Requirements
 ------------
 
-django-critical-css supports Python 3 only and requires at least Django 1.11.
-Additionally, it requires requests, django-rq, and django-inline-static.
+* Python 3 only
+* at least Django 1.11
+* `requests <https://github.com/requests/requests/>`_
+* `django-rq <https://github.com/rq/django-rq/>`_
+* `django-inline-static <https://github.com/moccu/django-inline-static/>`_
 
 
 Prepare for development
