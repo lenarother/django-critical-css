@@ -10,6 +10,7 @@ django-critical-css to perform its function requires:
 * redis worker available.
 
 
+
 Templatetag for inlining critical css
 -------------------------------------
 
@@ -20,7 +21,7 @@ from database into your template using ``templates/critical/critical.html``.
 
     {% load critical_tags %}
 
-			{% critical_css 'your/css/styles_path.css' %}
+      {% critical_css 'your/css/styles_path.css' %}
 
 If page does not have critical css saved in the database yet or css path of saved
 critical-cms-object is different than input one the tag will return a normal css link.
@@ -33,12 +34,14 @@ Css path will be modified as with using django static templatetag. E.g.:
 Additionally, the templatetag will asynchronously trigger calculation of critical css.
 
 
+
 Object for saving critical css
 ------------------------------
 
 Critical css is saved into database together with page url, url to css file,
 and date of last modification. The critical css is calculated through
 penthouse service. It is required to provide ``PENTHOUSE_HOST`` in settings.
+
 
 
 Management command for emptying critical css
@@ -53,6 +56,7 @@ on the first request.
     python manage.py empty_critical_css
 
 
+
 Additional settings
 -------------------
 
@@ -62,6 +66,7 @@ Additional settings
   be send to penthouse service along with page url and css path. See available
 	options `here <http://www.phpied.com/css-and-the-critical-path/>`_. By default
   the dict is empty.
+
 
 
 Usage with django-cms
