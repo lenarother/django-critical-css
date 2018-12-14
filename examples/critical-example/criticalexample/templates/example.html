@@ -1,0 +1,66 @@
+{% load critical_tags %}
+
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Single-file Bootstrap template"/>
+    <meta name="author" content="Anton Staroverov (http://tonystar.me)"/>
+    <meta name="generator" content="Bootstrap Template (http://bootstrap.tonystar.me/template)"/>
+    <link rel="icon" href="//cdn.rawgit.com/twbs/bootstrap/v3.3.5/docs/favicon.ico"/>
+    <title>Bootstrap Template</title>
+    
+    {# critical_css templatetag example #}
+    {% critical_css 'css/styles.css' %}
+
+    {# Clasic link would look like this #}
+    {# <link rel="stylesheet" href="{% static 'css/styles.css' %}" /> #}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap Template</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="http://bootstrap.tonystar.me/template" target="_blank">Homepage</a></li>
+            <li><a href="https://github.com/tonystar/bootstrap-template" target="_blank">Source</a></li>
+            <li><a href="http://codepen.io/tonystar/full/pJpROO/" target="_blank">Demo</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header class="jumbotron text-center" style="padding-top: 8rem">
+      <div class="container">
+        <h1>Bootstrap Template</h1>
+        <p>
+          Use this template as a way to quickly start any new project.<br/>
+          All you get is a single HTML file with everything bootstrapped!
+        </p>
+        <div>
+          <a href="https://github.com/tonystar/bootstrap-template/archive/master.zip" class="btn btn-primary btn-lg"><i class="fa fa-download"></i>&nbsp; Download</a>
+          <a href="https://github.com/tonystar/bootstrap-template" class="btn btn-default btn-lg">Fork on &nbsp;<i class="fa fa-github"></i></a>
+          <a href="http://codepen.io/tonystar/pen/pJpROO" class="btn btn-default btn-lg">Fork on &nbsp;<i class="fa fa-codepen"></i></a>
+        </div>
+      </div>
+    </header>
+    <div class="github-fork-ribbon-wrapper right">
+      <div class="github-fork-ribbon">
+        <a href="https://github.com/tonystar/bootstrap-template">Fork me on GitHub</a>
+      </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdn.rawgit.com/tonystar/bootstrap-plugins/master/dist/js/bootstrap-plugins.min.js"/>
+    <!--script src="custom.js"></script-->
+  </body>
+</html>

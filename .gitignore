@@ -10,3 +10,4 @@ dist/
 build/
 docs/_build/
 Pipfile.lock
+db.sqlite3
