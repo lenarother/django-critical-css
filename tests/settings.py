@@ -43,20 +43,6 @@ RQ_QUEUES = {
 
 CRITICAL_CSS_ACTIVE = True
 PENTHOUSE_HOST = 'localhost'
-PENTHOUSE_CONFIG = {
-    'width': '720',
-    'propertiesToRemove': [
-        '(.*)animation(.*)',
-        '(.*)transition(.*)',
-        '(.*)tap-highlight-color',
-        '(.*)user-select',
-        'cursor',
-        'background-image',
-        'pointer-events',
-        'src',
-        'will-change',
-    ]
-}
 
 try:
     import cms  # noqa
