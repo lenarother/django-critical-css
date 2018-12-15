@@ -17,16 +17,16 @@ django-critical-css
    :target: https://travis-ci.org/lenarother/django-critical-css
 
 
-django-critical-css aims to speed up webpage rendering by saving
-`critical css <http://www.phpied.com/css-and-the-critical-path/>`_ in db.
+django-critical-css speeds up webpage rendering by saving
+`critical css <http://www.phpied.com/css-and-the-critical-path/>`_ in a database.
 
 
 Features
 --------
 
-* critical_css templatetag to inline critical css from db.
-* empty_critical_css management command.
-* signal for emptying critical css on page publish action when using django-cms.
+* `critical_css` templatetag to inline critical css from the database.
+* `empty_critical_css` management command.
+* signal for emptying critical css upon page publication when using django-cms.
 
 
 Requirements
