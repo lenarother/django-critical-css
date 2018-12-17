@@ -1,7 +1,8 @@
 import logging
 
-from cms.signals import post_publish
 from django.dispatch import receiver
+
+from cms.signals import post_publish
 
 from ..models import Critical
 
