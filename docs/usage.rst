@@ -20,7 +20,7 @@ from the database into your template using ``templates/critical/critical.html``.
 
     {% load critical_tags %}
 
-      {% critical_css 'your/css/styles_path.css' %}
+    {% critical_css 'your/css/styles_path.css' %}
 
 If page does not have any critical css saved in the database yet or the css path of the saved
 critical-cms-object is different than the argument of `critical_css` the tag will return a normal css link.
