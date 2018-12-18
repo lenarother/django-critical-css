@@ -51,7 +51,7 @@ class PenthouseApi(object):
 
         if len(response.text) < 3 or response.text[:3].isdigit():
             raise PenthouseException(
-                'Invalid pentahouse response ({0}): '
+                'Invalid penthouse response ({0}): '
                 'url - {1}, css - {2}'.format(
                     response.text, target_url, target_css))
 
