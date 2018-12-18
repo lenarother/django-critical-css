@@ -23,7 +23,7 @@ from the database into your template using ``templates/critical/critical.html``.
     {% critical_css 'your/css/styles_path.css' %}
 
 If page does not have any critical css saved in the database yet or the css path of the saved
-critical-cms-object is different than the argument of `critical_css` the tag will return a normal css link.
+ critical-cms-object is different than the argument of `critical_css` the tag will return a normal stylesheet link-tag.
 The css path will be modified as when using the django `static` templatetag, e.g.:
 
 .. code-block:: text
