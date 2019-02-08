@@ -18,7 +18,7 @@ django-critical-css
 
 
 django-critical-css speeds up webpage rendering by saving
-`critical css <http://www.phpied.com/css-and-the-critical-path/>`_ in a database.
+ `critical css <https://www.phpied.com/css-and-the-critical-path/>`_ in a database.
 
 
 Features
