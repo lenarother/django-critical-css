@@ -60,7 +60,7 @@ Additional settings
   for your dev environment. By default critical css calculation is always active.
 * ``PENTHOUSE_CONFIG`` is a dict with additional configuration options that will
   be sent to the penthouse service along with the page url and css path. See available
-	options `here <http://www.phpied.com/css-and-the-critical-path/>`_. By default
+ 	options `here <https://github.com/moccu/penthouse-service#options>`_. By default
   the dict is empty.
 
 
