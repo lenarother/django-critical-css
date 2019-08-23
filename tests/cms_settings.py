@@ -12,17 +12,18 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = (
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'cms.middleware.toolbar.ToolbarMiddleware',
-        'cms.middleware.page.CurrentPageMiddleware',
-    )
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+)
 
 CMS_TEMPLATES = (('empty_template.html', 'empty'),)
 CMS_TOOLBARS = [
-        'cms.cms_toolbars.PlaceholderToolbar',
-        'cms.cms_toolbars.BasicToolbar',
-        'cms.cms_toolbars.PageToolbar',
-    ]
+    'cms.cms_toolbars.PlaceholderToolbar',
+    'cms.cms_toolbars.BasicToolbar',
+    'cms.cms_toolbars.PageToolbar',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
