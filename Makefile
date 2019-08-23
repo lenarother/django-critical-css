@@ -7,7 +7,10 @@ clean:
 	pipenv run make -C docs clean
 
 tests:
-	pipenv run py.test --cov
+	pipenv run py.test --isort --flake8 --cov ${ARGS}
+
+pytests:
+	pipenv run py.test ${ARGS}
 
 cov: tests
 	pipenv run coverage html
