@@ -13,6 +13,7 @@ def django_cms_is_present():
     """
     try:
         import cms  # noqa
+
         return True
     except ImportError:
         return False
@@ -37,7 +38,7 @@ def complete_url(url):
     return '{scheme}://{domain}/{url}'.format(
         scheme='https' if settings.SESSION_COOKIE_SECURE else 'http',
         domain=Site.objects.get_current().domain.rstrip('/'),
-        url=url.lstrip('/')
+        url=url.lstrip('/'),
     )
 
 
@@ -52,7 +53,8 @@ def use_critical_css_for_request(request):
         return False
     if django_cms_is_present():
         if (
-                not request.current_page.is_published(settings.LANGUAGE_CODE) or
-                request.current_page.publisher_is_draft):
+            not request.current_page.is_published(settings.LANGUAGE_CODE)
+            or request.current_page.publisher_is_draft
+        ):
             return False
     return True

@@ -5,10 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class Critical(models.Model):
     STATE_PENDING = 1
     STATE_READY = 2
-    STATE_CHOICES = (
-        (STATE_PENDING, _('Pending')),
-        (STATE_READY, _('Ready')),
-    )
+    STATE_CHOICES = ((STATE_PENDING, _('Pending')), (STATE_READY, _('Ready')))
 
     url = models.URLField(_('Page URL'), max_length=200, unique=True)
     path = models.CharField(_('CSS path'), max_length=255, blank=True, null=True)

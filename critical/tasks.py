@@ -17,8 +17,7 @@ def calculate_critical_css(critical_id, original_path):
     logger.info('Task: critical css with id {0} requested.'.format(critical_id))
     critical = Critical.objects.filter(id=critical_id).first()
     if not critical:
-        raise CriticalException(
-            'There is no Critical object with id {0}'.format(critical_id))
+        raise CriticalException('There is no Critical object with id {0}'.format(critical_id))
     logger.info('Task: {0}, {1}'.format(critical.url, critical.path))
 
     critical.is_pending = True
@@ -33,8 +32,7 @@ def calculate_critical_css(critical_id, original_path):
         critical.save(update_fields=['is_pending'])
         raise CriticalException('PenthouseException: {0}'.format(error))
 
-    critical_css = transform_css_urls(
-        original_path, critical.path, critical_css_raw)
+    critical_css = transform_css_urls(original_path, critical.path, critical_css_raw)
     critical.css = mark_safe(critical_css)
     critical.is_pending = False
     critical.save()

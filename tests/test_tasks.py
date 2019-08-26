@@ -20,8 +20,7 @@ def test_critical_no_object(admin_user):
 @pytest.mark.django_db
 def test_penthouse_api_called(api_mock):
     api_mock.return_value = 'testing-task'
-    critical = CriticalFactory.create(
-        url='/', path='/static/css/styles.css', css=None)
+    critical = CriticalFactory.create(url='/', path='/static/css/styles.css', css=None)
 
     calculate_critical_css(critical.id, 'css/styles.css')
     critical.refresh_from_db()
@@ -37,8 +36,7 @@ def test_penthouse_api_called(api_mock):
 def test_css_paths_transformation(api_mock, settings):
     settings.STATIC_URL = '/foobar/'
     api_mock.return_value = '.myclass{url("../img/logo.svg");}'
-    critical = CriticalFactory.create(
-        url='/', path='/static/css/styles.css', css=None)
+    critical = CriticalFactory.create(url='/', path='/static/css/styles.css', css=None)
 
     calculate_critical_css(critical.id, 'css/styles.css')
     critical.refresh_from_db()
@@ -50,8 +48,7 @@ def test_css_paths_transformation(api_mock, settings):
 @pytest.mark.django_db
 def test_penthouse_api_errror(api_mock, admin_user, settings):
     api_mock.side_effect = PenthouseException()
-    critical = CriticalFactory.create(
-        url='/', path='/static/css/styles.css', css=None)
+    critical = CriticalFactory.create(url='/', path='/static/css/styles.css', css=None)
 
     with pytest.raises(CriticalException):
         calculate_critical_css(critical.id, 'css/styles.css')

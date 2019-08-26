@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,11 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
     'django_rq',
     'inline_static',
     'critical',
-
     'criticalexample.apps.CriticalexampleConfig',
 ]
 
@@ -69,9 +68,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+            ]
         },
-    },
+    }
 ]
 
 WSGI_APPLICATION = 'criticalexample.wsgi.application'
@@ -92,18 +91,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
@@ -126,16 +117,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/admin/login'
-SITE_ID=1
+SITE_ID = 1
 
 RQ_SHOW_ADMIN_LINK = True
-RQ_QUEUES = {
-    'default': {
-        'HOST': 'localhost',
-        'PORT': 6379,
-        'DB': 0,
-    },
-}
+RQ_QUEUES = {'default': {'HOST': 'localhost', 'PORT': 6379, 'DB': 0}}
 
 CRITICAL_CSS_ACTIVE = True
 PENTHOUSE_HOST = 'localhost'
@@ -151,5 +136,5 @@ PENTHOUSE_CONFIG = {
         'pointer-events',
         'src',
         'will-change',
-    ]
+    ],
 }

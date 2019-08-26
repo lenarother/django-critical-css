@@ -14,5 +14,5 @@ class Command(BaseCommand):
         qs_count = qs.count()
         qs.delete()
         self.stdout.write(
-            self.style.SUCCESS(
-                'Successfully deleted {0} critical objects'.format(qs_count)))
+            self.style.SUCCESS('Successfully deleted {0} critical objects'.format(qs_count))
+        )

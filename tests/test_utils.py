@@ -4,7 +4,11 @@ import pytest
 from django.conf import settings
 
 from critical.utils import (
-    complete_url, django_cms_is_present, get_url_from_request, use_critical_css_for_request)
+    complete_url,
+    django_cms_is_present,
+    get_url_from_request,
+    use_critical_css_for_request,
+)
 
 
 try:
@@ -17,6 +21,7 @@ except ImportError:
 def test_django_cms_is_present():
     try:
         import cms  # noqa
+
         assert django_cms_is_present() is True
     except ImportError:
         assert django_cms_is_present() is False
@@ -37,6 +42,7 @@ def test_get_url_from_request(rf):
 def test_complete_url_secure(site_mock, admin_user):
     class SiteMock:
         domain = 'test.com'
+
     settings.SESSION_COOKIE_SECURE = True
     site_mock.return_value = SiteMock()
     assert complete_url('/') == 'https://test.com/'
@@ -47,6 +53,7 @@ def test_complete_url_secure(site_mock, admin_user):
 def test_complete_url_unsecure(site_mock, admin_user):
     class SiteMock:
         domain = 'test.com'
+
     settings.SESSION_COOKIE_SECURE = False
     site_mock.return_value = SiteMock()
     assert complete_url('/') == 'http://test.com/'

@@ -7,24 +7,36 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Critical',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name='ID'
+                    ),
+                ),
                 ('url', models.URLField(unique=True, verbose_name='Page URL')),
-                ('path', models.CharField(blank=True, max_length=255, null=True, verbose_name='CSS path')),
+                (
+                    'path',
+                    models.CharField(
+                        blank=True, max_length=255, null=True, verbose_name='CSS path'
+                    ),
+                ),
                 ('css', models.TextField(blank=True, null=True, verbose_name='Critical CSS')),
                 ('is_pending', models.BooleanField(default=False, verbose_name='Is pending')),
-                ('date_updated', models.DateTimeField(auto_now=True, verbose_name='Date updated')),
+                (
+                    'date_updated',
+                    models.DateTimeField(auto_now=True, verbose_name='Date updated'),
+                ),
             ],
             options={
                 'verbose_name': 'Critical CSS',
                 'verbose_name_plural': 'Critical CSS',
                 'ordering': ('-date_updated', 'url'),
             },
-        ),
+        )
     ]

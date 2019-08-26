@@ -23,21 +23,15 @@ def critical_css(context, path):
         url = get_url_from_request(request)
         critical, created = Critical.objects.get_or_create(url=url)
         if created:
-            logger.info(
-                'Templatetag: critical object created ({0})'.format(url))
+            logger.info('Templatetag: critical object created ({0})'.format(url))
 
         if not critical.css or critical.path != path:
             critical.path = path
             critical.css = None
             critical.save()
-            calculate_critical_css.delay(
-                critical_id=critical.id, original_path=original_path)
-            logger.info(
-                'Templatetag: triggered css calculation for {0}'.format(url))
+            calculate_critical_css.delay(critical_id=critical.id, original_path=original_path)
+            logger.info('Templatetag: triggered css calculation for {0}'.format(url))
         else:
             result_css = critical.css
 
-    return {
-        'critical_css': result_css,
-        'css_path': path,
-    }
+    return {'critical_css': result_css, 'css_path': path}

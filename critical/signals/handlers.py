@@ -18,8 +18,6 @@ def set_critical_css_to_empty(sender, **kwargs):
     if not created:
         critical.css = None
         critical.save()
-        logger.info(
-            'Page published signal: critical css deleted ({0})'.format(url))
+        logger.info('Page published signal: critical css deleted ({0})'.format(url))
     else:
-        logger.info(
-            'Page published signal: critical-object created ({0})'.format(url))
+        logger.info('Page published signal: critical-object created ({0})'.format(url))

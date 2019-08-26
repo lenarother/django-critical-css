@@ -9,7 +9,6 @@ from critical.api import PenthouseApi, PenthouseException
 
 @pytest.mark.django_db
 class TestPenthouseApi:
-
     def test_base_url(self, settings):
         settings.PENTHOUSE_HOST = 'foobar'
         api = PenthouseApi()
@@ -23,11 +22,13 @@ class TestPenthouseApi:
 
         api = PenthouseApi()
 
-        assert api.get_params('/foo', 'css/test.css') == ({
-            'css': 'http://test.com/css/test.css',
-            'url': 'http://test.com/foo',
-            'width': '100',
-        })
+        assert api.get_params('/foo', 'css/test.css') == (
+            {
+                'css': 'http://test.com/css/test.css',
+                'url': 'http://test.com/foo',
+                'width': '100',
+            }
+        )
 
     def test_get_params_no_config(self, settings):
         settings.SESSION_COOKIE_SECURE = False
@@ -37,10 +38,9 @@ class TestPenthouseApi:
 
         api = PenthouseApi()
 
-        assert api.get_params('/foo', 'css/test.css') == ({
-            'css': 'http://test.com/css/test.css',
-            'url': 'http://test.com/foo',
-        })
+        assert api.get_params('/foo', 'css/test.css') == (
+            {'css': 'http://test.com/css/test.css', 'url': 'http://test.com/foo'}
+        )
 
     @mock.patch('critical.api.requests.get')
     def test_request_critical_css(self, requests_get_mock, settings):
@@ -64,10 +64,7 @@ class TestPenthouseApi:
 
         requests_get_mock.assert_called_once_with(
             'http://foobar:3000/',
-            {
-                'url': 'http://test.com/foo',
-                'css': 'http://test.com/css/test.css'
-            }
+            {'url': 'http://test.com/foo', 'css': 'http://test.com/css/test.css'},
         )
 
     @mock.patch('critical.api.requests.get')

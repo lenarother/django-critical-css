@@ -4,6 +4,4 @@ except ImportError:
     from django.conf.urls import include, url
 
 
-urlpatterns = [
-    url(r'', include('cms.urls')),
-]
+urlpatterns = [url(r'', include('cms.urls'))]

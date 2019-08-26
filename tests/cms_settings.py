@@ -5,11 +5,7 @@ LANGUAGE_CODE = 'de'
 
 ROOT_URLCONF = 'tests.urls'
 
-INSTALLED_APPS = [
-    'cms',
-    'treebeard',
-    'menus',
-]
+INSTALLED_APPS = ['cms', 'treebeard', 'menus']
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -31,10 +27,13 @@ TEMPLATES = [
         'OPTIONS': {
             'debug': False,
             'loaders': [
-                ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                ]),
+                (
+                    'django.template.loaders.cached.Loader',
+                    [
+                        'django.template.loaders.filesystem.Loader',
+                        'django.template.loaders.app_directories.Loader',
+                    ],
+                )
             ],
             'context_processors': [
                 'django.template.context_processors.request',
@@ -45,5 +44,5 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
             ],
         },
-    },
+    }
 ]

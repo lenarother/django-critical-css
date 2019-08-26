@@ -12,7 +12,6 @@ except ImportError:
 @pytest.mark.cms
 @pytest.mark.django_db
 class TestSignals:
-
     def test_critical_created_after_page_publish(self, admin_user):
         page = create_page('page', 'INHERIT', 'de')
         publish_page(page, admin_user, 'de')
