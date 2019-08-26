@@ -10,5 +10,6 @@ htmlcov/
 dist/
 build/
 docs/_build/
+pip-wheel-metadata/
 Pipfile.lock
 db.sqlite3

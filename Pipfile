@@ -13,6 +13,8 @@ factory-boy = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
 tox = "*"
+isort = "*"
+pytest-black = "*"
 
 [packages]
 django = "*"
