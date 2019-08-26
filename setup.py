@@ -25,7 +25,7 @@ setup(
     author='Magdalena Rother',
     author_email='rother.magdalena@gmail.com',
     packages=find_packages(exclude=['tests', 'tests.*']),
-    install_requires=[],
+    install_requires=['django_rq', 'django-inline_static'],
     include_package_data=True,
     keywords='django',
     classifiers=[

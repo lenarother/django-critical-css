@@ -12,6 +12,7 @@ pytest-isort = "*"
 factory-boy = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+tox = "*"
 
 [packages]
 django = "*"
