@@ -13,6 +13,11 @@ logger = logging.getLogger(__name__)
 class PenthouseApi(object):
     @property
     def base_url(self):
+        if not getattr(settings, 'PENTHOUSE_HOST', None):
+            raise PenthouseException(
+                'Penthouse api inproperly configurred: '
+                'set PENTHOUSE_HOST in your settings file.'
+            )
         return 'http://{0}:3000/'.format(settings.PENTHOUSE_HOST)
 
     def get_params(self, url, css_path):
@@ -53,3 +58,8 @@ class PenthouseApi(object):
             )
 
         return response.text
+
+
+def calculate_critical_css(url, css):
+    api = PenthouseApi()
+    return api.get_critical_css(url, css)

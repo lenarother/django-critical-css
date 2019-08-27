@@ -4,7 +4,7 @@ import pytest
 import requests
 from django.contrib.sites.models import Site
 
-from critical.api import PenthouseApi, PenthouseException
+from critical.api import PenthouseApi, PenthouseException, calculate_critical_css
 
 
 @pytest.mark.django_db
@@ -13,6 +13,12 @@ class TestPenthouseApi:
         settings.PENTHOUSE_HOST = 'foobar'
         api = PenthouseApi()
         assert api.base_url == 'http://foobar:3000/'
+
+    def test_base_url_error(self, settings):
+        settings.PENTHOUSE_HOST = None
+        api = PenthouseApi()
+        with pytest.raises(PenthouseException):
+            api.base_url
 
     def test_get_params(self, settings):
         settings.SESSION_COOKIE_SECURE = False
@@ -129,3 +135,9 @@ class TestPenthouseApi:
 
         with pytest.raises(PenthouseException):
             api.get_critical_css('/foo', 'css/test.css')
+
+
+@mock.patch('critical.api.PenthouseApi.get_critical_css')
+def test_calculate_critical_css(get_critical_css_mock):
+    calculate_critical_css('https://foo/bar.com', 'https://foo/bar.css')
+    assert get_critical_css_mock.call_count == 1
