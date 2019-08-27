@@ -13,12 +13,12 @@ logger = logging.getLogger(__name__)
 class PenthouseApi(object):
     @property
     def base_url(self):
-        if not getattr(settings, 'PENTHOUSE_HOST', None):
+        if not getattr(settings, 'PENTHOUSE_URL', None):
             raise PenthouseException(
                 'Penthouse api inproperly configurred: '
-                'set PENTHOUSE_HOST in your settings file.'
+                'set PENTHOUSE_URL in your settings file.'
             )
-        return 'http://{0}:3000/'.format(settings.PENTHOUSE_HOST)
+        return settings.PENTHOUSE_URL
 
     def get_params(self, url, css_path):
         params = {'url': complete_url(url), 'css': complete_url(css_path)}

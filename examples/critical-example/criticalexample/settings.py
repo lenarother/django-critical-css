@@ -123,7 +123,7 @@ RQ_SHOW_ADMIN_LINK = True
 RQ_QUEUES = {'default': {'HOST': 'localhost', 'PORT': 6379, 'DB': 0}}
 
 CRITICAL_CSS_ACTIVE = True
-PENTHOUSE_HOST = 'localhost'
+PENTHOUSE_URL = 'http://localhost:3000/'
 PENTHOUSE_CONFIG = {
     'width': '720',
     'propertiesToRemove': [
