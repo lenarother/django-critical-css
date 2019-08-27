@@ -31,7 +31,6 @@ def critical_css(context, path):
             critical.save()
             calculate_critical_css.delay(critical_id=critical.id, original_path=original_path)
             logger.info('Templatetag: triggered css calculation for {0}'.format(url))
-        else:
-            result_css = critical.css
+        result_css = critical.css
 
     return {'critical_css': result_css, 'css_path': path}

@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 
 @job
 def calculate_critical_css(critical_id, original_path):
-    from .api import PenthouseApi
-    from .exceptions import CriticalException, PenthouseException
+    from .services import calculate_critical_css as service_calculate_critical_css
+    from .exceptions import CriticalException
     from .models import Critical
 
     logger.info('Task: critical css with id {0} requested.'.format(critical_id))
@@ -25,14 +25,13 @@ def calculate_critical_css(critical_id, original_path):
     logger.info('Task: critical css with id {0} pending.'.format(critical_id))
 
     try:
-        api = PenthouseApi()
-        critical_css_raw = api.get_critical_css(critical.url, critical.path)
-    except PenthouseException as error:
+        critical_css_raw = service_calculate_critical_css(critical.url, critical.path)
+        critical_css = transform_css_urls(original_path, critical.path, critical_css_raw)
+    except Exception as exc:
         critical.is_pending = False
         critical.save(update_fields=['is_pending'])
-        raise CriticalException('PenthouseException: {0}'.format(error))
+        raise CriticalException('Could not calculate critical css') from exc
 
-    critical_css = transform_css_urls(original_path, critical.path, critical_css_raw)
     critical.css = mark_safe(critical_css)
     critical.is_pending = False
     critical.save()
