@@ -15,7 +15,7 @@ with open(os.path.join(BASE_DIR, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='django-critical-css',
     version=VERSION,
-    description='TODO: Explain what your libraries does.',
+    description='django-critical-css aims to speed up webpage rendering by saving critical css in db.',
     long_description=long_description,
     url='https://github.com/lenarother/django-critical-css',
     project_urls={
@@ -25,7 +25,7 @@ setup(
     author='Magdalena Rother',
     author_email='rother.magdalena@gmail.com',
     packages=find_packages(exclude=['tests', 'tests.*']),
-    install_requires=[],
+    install_requires=['django_rq', 'django-inline_static'],
     include_package_data=True,
     keywords='django',
     classifiers=[

@@ -17,19 +17,26 @@ django-critical-css
    :target: https://travis-ci.org/lenarother/django-critical-css
 
 
-TODO: Explain what your library does in one or two sentences.
+django-critical-css speeds up webpage rendering by saving
+ `critical css <https://www.phpied.com/css-and-the-critical-path/>`_ in a database.
 
 
 Features
 --------
 
-* TODO: Provide a list of the main features of your library
+* `critical_css` templatetag to inline critical css from the database.
+* `empty_critical_css` management command.
+* signal for emptying critical css upon page publication when using django-cms.
 
 
 Requirements
 ------------
 
-django-critical-css supports Python 3 only and requires at least Django 1.11.
+* Python 3 only
+* at least Django 1.11
+* `requests <https://github.com/requests/requests/>`_
+* `django-rq <https://github.com/rq/django-rq/>`_
+* `django-inline-static <https://github.com/moccu/django-inline-static/>`_
 
 
 Prepare for development

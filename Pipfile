@@ -5,16 +5,22 @@ name = "pypi"
 
 [dev-packages]
 pytest = "*"
-"pytest-pep8" = "*"
-pytest-flakes = "*"
-pytest-isort = "*"
-pytest-django = "*"
 pytest-cov = "*"
+pytest-django = "*"
+pytest-flake8 = "*"
+pytest-isort = "*"
+factory-boy = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+tox = "*"
+isort = "*"
+pytest-black = "*"
 
 [packages]
 django = "*"
+requests = "*"
+django-rq = "*"
+django-inline-static = "*"
 
 [requires]
 python_version = "3.6"
