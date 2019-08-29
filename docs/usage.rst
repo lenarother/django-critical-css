@@ -6,7 +6,8 @@ Prerequisites
 
 To perform its function, django-critical-css requires:
 
-* `penthouse <https://www.npmjs.com/package/penthouse/>`_ service available.
+* service for critical css calculation available
+  (e.g. `penthouse-service <https://github.com/moccu/penthouse-service>`_).
 * redis worker available.
 
 
@@ -37,8 +38,40 @@ Object for saving critical css
 ------------------------------
 
 Critical css is saved into the database together with the page url, the url of the css file,
-and the date of last modification. The critical css is calculated through
-a penthouse service. You need to provide ``PENTHOUSE_HOST`` in settings.
+and the date of last modification.
+
+
+Critical css calculation
+------------------------
+
+The calculation of the critical css itself is not within the scope of this library.
+You have to use an external service that does this job.
+The default backend is `penthouse-service <https://github.com/moccu/penthouse-service>`_.
+To use it run an instance of the service and provide the url in settings:
+
+.. code-block:: text
+
+    PENTHOUSE_URL = 'http://your_penthouse:3000/'
+
+You can provide an `additional configuration <https://github.com/moccu/penthouse-service#options>`_
+to penthouse-service.
+
+.. code-block:: text
+
+  PENTHOUSE_CONFIG = {
+      'width': '720',
+      'propertiesToRemove': [
+          '(.*)animation(.*)',
+          '(.*)transition(.*)',
+      ]
+  }
+
+Alternatively, you can define your custom function,
+which takes url and css path as arguments and returns critical css as string.
+
+.. code-block:: text
+
+    CRITICAL_CSS_BACKEND = 'function.calculating.critical.css'
 
 
 Management command for emptying critical css
@@ -57,11 +90,7 @@ Additional settings
 -------------------
 
 * By setting ``CRITICAL_CSS_ACTIVE`` to `False` you can deactivate css calculation
-  for your dev environment. By default critical css calculation is always active.
-* ``PENTHOUSE_CONFIG`` is a dict with additional configuration options that will
-  be sent to the penthouse service along with the page url and css path. See available
- 	options `here <https://github.com/moccu/penthouse-service#options>`_. By default
-  the dict is empty.
+  for your dev environment. By default critical css calculation is set to active.
 
 
 Usage with django-cms

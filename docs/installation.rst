@@ -3,10 +3,13 @@ Installation
 
 * Install with pip::
 
+.. code-block:: text
+
     pip install django-critical-css
 
-
 * Your ``INSTALLED_APPS`` setting::
+
+.. code-block:: text
 
     INSTALLED_APPS = (
         # ...
@@ -19,11 +22,17 @@ Installation
 
 * Settings::
 
-    You can run an instance of `penthouse service <https://github.com/moccu/penthouse-service>`_ and add its url to settings.
+You can run an instance of `penthouse service <https://github.com/moccu/penthouse-service>`_ and add its url to settings.
+
+.. code-block:: text
+
     PENTHOUSE_URL = 'http://penthouse:3000/'
 
-    Or you can configure your own function to critical css calculation.
-    This function needs to accept two args - target url and target css path.
+Alternatively, you can define your custom function,
+which takes url and css path as arguments and returns critical css as string.
+
+.. code-block:: text
+
     CRITICAL_CSS_BACKEND = 'function.calculating.critical.css'
 
 * It is possible to use critical with django-cms. If you decide to do so refer to
