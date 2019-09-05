@@ -1,4 +1,5 @@
 Django>=1.11
 django-rq
+django-inline-static
 # rq
 # testing: factory, cms
