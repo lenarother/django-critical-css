@@ -1,3 +1,4 @@
 Django>=1.11
+django-rq
 # rq
 # testing: factory, cms
