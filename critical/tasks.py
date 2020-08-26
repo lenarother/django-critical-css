@@ -11,8 +11,7 @@ logger = logging.getLogger(__name__)
 def calculate_critical_css(critical_id, original_path):
     from .exceptions import CriticalException
     from .models import Critical
-    from .services import \
-        calculate_critical_css as service_calculate_critical_css
+    from .services import calculate_critical_css as service_calculate
 
     logger.info('Task: critical css with id {0} requested.'.format(critical_id))
     critical = Critical.objects.filter(id=critical_id).first()
@@ -25,7 +24,7 @@ def calculate_critical_css(critical_id, original_path):
     logger.info('Task: critical css with id {0} pending.'.format(critical_id))
 
     try:
-        critical_css_raw = service_calculate_critical_css(critical.url, critical.path)
+        critical_css_raw = service_calculate(critical.url, critical.path)
         critical_css = transform_css_urls(original_path, critical.path, critical_css_raw)
     except Exception as exc:
         critical.is_pending = False
