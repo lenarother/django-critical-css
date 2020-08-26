@@ -6,7 +6,6 @@ from django.conf import settings
 from .exceptions import PenthouseException
 from .utils import complete_url
 
-
 logger = logging.getLogger(__name__)
 
 

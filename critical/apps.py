@@ -11,6 +11,7 @@ class CriticalConfig(AppConfig):
             # If django-cms is installed include signals
             # for refreshing critical css on page publish
             import cms  # noqa
+
             import critical.signals.handlers  # noqa
         except ImportError:
             pass

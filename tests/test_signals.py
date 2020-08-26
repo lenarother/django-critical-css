@@ -2,7 +2,6 @@ import pytest
 
 from critical.models import Critical
 
-
 try:
     from cms.api import create_page, publish_page
 except ImportError:

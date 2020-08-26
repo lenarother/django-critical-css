@@ -4,7 +4,11 @@ import pytest
 import requests
 from django.contrib.sites.models import Site
 
-from critical.api import PenthouseApi, PenthouseException, calculate_critical_css
+from critical.api import (
+    PenthouseApi,
+    PenthouseException,
+    calculate_critical_css,
+)
 
 
 @pytest.mark.django_db

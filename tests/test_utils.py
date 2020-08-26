@@ -10,7 +10,6 @@ from critical.utils import (
     use_critical_css_for_request,
 )
 
-
 try:
     from cms.api import create_page, publish_page
     from cms.models import Page
