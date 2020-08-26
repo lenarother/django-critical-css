@@ -56,7 +56,8 @@ class TestCriticalTags:
     @mock.patch('critical.templatetags.critical_tags.calculate_critical_css')
     @mock.patch('critical.templatetags.critical_tags.use_critical_css_for_request')
     def test_critical_object_created_with_query_string(
-            self, use_critical_mock, critical_task_mock, rf, settings):
+        self, use_critical_mock, critical_task_mock, rf, settings
+    ):
         settings.CRITICAL_CSS_IGNORE_QUERY_STRING = False
         use_critical_mock.return_value = True
         critical_task_mock.delay.return_value = 'foo bar bazz'
@@ -82,7 +83,8 @@ class TestCriticalTags:
     @mock.patch('critical.templatetags.critical_tags.calculate_critical_css')
     @mock.patch('critical.templatetags.critical_tags.use_critical_css_for_request')
     def test_critical_object_created_ignore_query_string(
-            self, use_critical_mock, critical_task_mock, rf, settings):
+        self, use_critical_mock, critical_task_mock, rf, settings
+    ):
         settings.CRITICAL_CSS_IGNORE_QUERY_STRING = True
 
         request = rf.get('/?p=1')
@@ -122,7 +124,8 @@ class TestCriticalTags:
     @mock.patch('critical.templatetags.critical_tags.calculate_critical_css')
     @mock.patch('critical.templatetags.critical_tags.use_critical_css_for_request')
     def test_success_ignore_query_string(
-            self, use_critical_mock, critical_task_mock, rf, settings):
+        self, use_critical_mock, critical_task_mock, rf, settings
+    ):
         settings.CRITICAL_CSS_IGNORE_QUERY_STRING = True
         use_critical_mock.return_value = True
         request = rf.get('/?p=3')
