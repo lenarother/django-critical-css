@@ -18,7 +18,6 @@ from django.urls import include, path
 
 from .views import ExampleView
 
-
 urlpatterns = [
     path('admin/rq/', include('django_rq.urls')),
     path('admin/', admin.site.urls),

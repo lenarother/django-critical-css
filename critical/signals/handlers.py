@@ -5,7 +5,6 @@ from django.dispatch import receiver
 
 from ..models import Critical
 
-
 logger = logging.getLogger(__name__)
 
 

@@ -1,6 +1,5 @@
 import os
 
-
 LANGUAGE_CODE = 'de'
 
 ROOT_URLCONF = 'tests.urls'

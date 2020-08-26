@@ -7,7 +7,6 @@ from ..models import Critical
 from ..tasks import calculate_critical_css
 from ..utils import get_url_from_request, use_critical_css_for_request
 
-
 register = template.Library()
 logger = logging.getLogger(__name__)
 
