@@ -26,6 +26,7 @@ RQ_QUEUES = {'default': {'HOST': 'localhost', 'PORT': 6379, 'DB': 0, 'ASYNC': Fa
 
 CRITICAL_CSS_ACTIVE = True
 PENTHOUSE_HOST = 'localhost'
+CRITICAL_CSS_IGNORE_QUERY_STRING = False
 
 try:
     import cms  # noqa

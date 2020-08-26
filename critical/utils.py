@@ -28,6 +28,8 @@ def get_url_from_request(request):
         Page ansolute url.
 
     """
+    if getattr(settings, 'CRITICAL_CSS_IGNORE_QUERY_STRING', False):
+        return request.path
     return request.get_full_path()
 
 

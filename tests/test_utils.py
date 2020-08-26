@@ -27,7 +27,9 @@ def test_django_cms_is_present():
         assert django_cms_is_present() is False
 
 
-def test_get_url_from_request(rf):
+def test_get_url_from_request(rf, settings):
+    settings.CRITICAL_CSS_IGNORE_QUERY_STRING = False
+
     request = rf.get('/')
     assert get_url_from_request(request) == '/'
 
@@ -36,6 +38,11 @@ def test_get_url_from_request(rf):
 
     request = rf.get('/#anchor')
     assert get_url_from_request(request) == '/'
+
+    settings.CRITICAL_CSS_IGNORE_QUERY_STRING = True
+
+    request = rf.get('/foo/?bar=bazz')
+    assert get_url_from_request(request) == '/foo/'
 
 
 @mock.patch('critical.utils.Site.objects.get_current')
