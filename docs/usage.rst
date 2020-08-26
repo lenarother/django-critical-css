@@ -91,7 +91,9 @@ Additional settings
 
 * By setting ``CRITICAL_CSS_ACTIVE`` to `False` you can deactivate css calculation
   for your dev environment. By default critical css calculation is set to active.
-
+* By setting ``CRITICAL_CSS_IGNORE_QUERY_STRING`` to `False` you can ignore query string
+  in the url. Then both urls `/?p=1`and `/?p=2` will be treated as one `/` and only one database
+  object will be created.
 
 Usage with django-cms
 ---------------------
