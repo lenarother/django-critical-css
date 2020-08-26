@@ -14,8 +14,9 @@ sphinx = "*"
 sphinx-rtd-theme = "*"
 tox = "*"
 isort = "*"
-pytest-black = "*"
 twine = "*"
+black = "*"
+pytest-black = "*"
 
 [packages]
 django = "*"
@@ -25,3 +26,6 @@ django-inline-static = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
